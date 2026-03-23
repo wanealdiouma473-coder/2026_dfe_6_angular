@@ -1,34 +1,48 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-patient',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './patient.html',
   styleUrl: './patient.css',
 })
-export class Patient {
+export class Patient implements OnInit
+{
+  title = 'Patients';
 
-  title = 'Patient';
 
-  patients = [
-    { id: 1, prenom: 'Fatima', nom: 'Wane', email: 'fatima@mail.com' },
-    { id: 2, prenom: 'Moussa', nom: 'Diop', email: 'moussa@mail.com' },
-    { id: 3, prenom: 'Aby', nom: 'Diaw', email: 'aby@mail.com' }
-  ];
-
-  constructor(private route: Router) {}
-
-  getSomme(a: number, b: number): number {
-    return a + b;
+tableauPatients2 :any = [];
+ 
+  constructor(private router: Router,private http:HttpClient) {
+    
   }
 
-  getEmail(): string {
-    return "sambapalaye@gmail.com";
+  ngOnInit(): void {
+    console.log ("tester la methode");
+    this.getPatients().subscribe(res => {
+      console.log (res);
+      this.tableauPatients2 = res;
+    });
   }
 
-  getInfoPatient() {
-    this.route.navigate(['/formulaire']);
-  }
+getSomme(a: number, b: number): number{
+  return a + b;
+}
+getEmail():string{
+  return"seck@mail.com";
+}
+
+getInfoPatient(){
+  this.router.navigate(['form']);
+
+}
+
+ getPatients(){
+   return this.http.get("http://localhost:3000/patients");
+   
+ }
+
 }
