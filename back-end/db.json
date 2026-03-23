@@ -1,0 +1,6 @@
+{
+    "patients" :[
+        {"id": 1,  "prenom": "Fatima", "nom": "Wane", "email": "wanealdiouma@mail.com" },
+        { "id": 2, "prenom": "Moussa", "nom": "Diop", "email": "moussadiop@mail.com" }
+    ]
+}

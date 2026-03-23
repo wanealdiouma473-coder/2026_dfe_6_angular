@@ -1,0 +1,31 @@
+<a routerLink="/patient" class="btn-retour">
+    Retour
+</a>
+<div class="container">
+
+<h2>Ajouter un patient</h2>
+
+<form (ngSubmit)="ajouterPatient()">
+
+<label>Nom</label>
+<input type="text" [(ngModel)]="patient.nom" name="nom" required>
+
+<label>Prénom</label>
+<input type="text" [(ngModel)]="patient.prenom" name="prenom" required>
+
+<label>Age</label>
+<input type="number" [(ngModel)]="patient.age" name="age" required>
+
+<label>Adresse</label>
+<input type="text" [(ngModel)]="patient.adresse" name="adresse">
+
+<label>Téléphone</label>
+<input type="text" [(ngModel)]="patient.telephone" name="telephone">
+
+<button type="submit">
+Ajouter
+</button>
+
+</form>
+
+</div>

@@ -1,0 +1,56 @@
+ <button class="btn-outline" (click)="getInfoPatient()">Ajouter un patient</button>
+<div class="card">
+    <div>
+
+    </div> 
+    <div class="card-body">
+
+        <h5 class="card-title">{{ title }} <form class="form-inline my-2 my-lg-0"><br>
+          <div class="form-inline my-2 my-lg-0">
+            <input class="form" type="search" [placeholder]="title" aria-label="Search">
+
+          </div>
+        </form></h5>
+      
+        <hr>
+        <!-- <a href="#" class="btn btn-primary">Ajouter un patient</a>
+        <a href="#" class="btn btn-secondary">Voir les patients</a> -->
+    </div> 
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Nom</th> 
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+    <tr *ngFor="let patient of patients">
+      <th scope="row">{{patient.id}}</th>
+      <th>{{patient.prenom}}</th>    <!--#interpolation -->
+      <th>{{patient.nom}}</th>
+      <th>{{patient.email}}</th>
+    </tr>
+    <tr>
+      <th scope="row">{{getSomme(2,3)}}</th>
+      <td>omar</td>
+      <td>faye</td> 
+      <td>faye12@gmail.com</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Aby</td>
+      <td>diaw</td>
+      <td>diawaby0202@gmail.com</td>
+    </tr>
+    <tr>
+      <th scope="row">{{getEmail()}}</th>
+      <td>palaye</td>
+      <td>samba</td>
+      <td>sambapalaye@gmail.com</td>
+    </tr>
+  </tbody>
+</table>   
+</div>
