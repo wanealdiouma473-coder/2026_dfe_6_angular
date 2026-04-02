@@ -1,0 +1,31 @@
+<a routerLink="/patient" class="btn-retour">
+    Retour
+</a>
+<div class="container">
+
+<h2>Ajouter un patient</h2>
+
+<form [formGroup]="formPatient" (ngSubmit)="inputFormpatient()">
+
+  <label>Nom</label>
+  <input type="text" formControlName="nom" id="nom" class="form-control" aria-describedby="passwordHelpBlock">
+
+<label>Prénom</label>
+<input type="text" formControlName="prenom" id="prenom" class="form-control" aria-describedby="passwordHelpBlock">
+
+<label>Email</label>
+<input type="email" formControlName="email" id="email" class="form-control" aria-describedby="passwordHelpBlock">
+
+<label>Age</label>
+<input type="number" formControlName="age" id="age" class="form-control" aria-describedby="passwordHelpBlock">
+
+<div class="mb-3 form-check">
+    <input type="checkbox" formControlName="consent" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+</div>
+<button type="submit" class="btn btn-primary pl-50">Submit</button>
+
+
+</form>
+
+</div>

@@ -1,0 +1,21 @@
+import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { Patient } from './patient/patient';
+import { Navbar } from './navbar/navbar';
+import { Sidebar } from './sidebar/sidebar';
+import { Footer } from './footer/footer';
+import { Content } from './content/content';
+
+
+
+
+@Component({
+  selector: 'app-root',
+  imports: [Navbar,Sidebar,Footer,RouterOutlet],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('my-angular-app');
+  
+}

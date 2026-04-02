@@ -1,0 +1,58 @@
+{
+  "patients": [
+    {
+      "id": "1",
+      "prenom": "Fatima",
+      "nom": "Wane",
+      "email": "wanealdiouma@mail.com",
+      "age": 45
+    },
+    {
+      "id": "5",
+      "prenom": "Aby",
+      "nom": "Diaw",
+      "email": "diaw23@mail.com",
+      "age": 28
+    },
+    {
+      "id": "4",
+      "prenom": "astou",
+      "nom": "bane",
+      "email": "aldiouma@mail.com",
+      "age": 35
+    },
+    {
+      "prenom": "fatima",
+      "nom": "wane",
+      "email": "wanealdiouma473@gmail.com",
+      "age": 21,
+      "consent": true,
+      "id": "hq_soDzUmck"
+    },
+    {
+      "prenom": "farina",
+      "nom": " sall",
+      "email": "feuz44@gmail.com",
+      "age": 32,
+      "consent": true,
+      "id": "8S9nEiG14Vo"
+    },
+    {
+      "prenom": "fatou",
+      "nom": "sarr",
+      "email": "feuz44@gmail.com",
+      "age": 20,
+      "consent": true,
+      "id": "FdWDIGYzO0M"
+    },
+    {
+      "prenom": "palaye",
+      "nom": "samba",
+      "email": "sw2@gmail.com",
+      "age": 20,
+      "consent": true,
+      "id": "pmvX5inO7-c"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

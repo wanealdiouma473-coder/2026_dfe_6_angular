@@ -1,0 +1,63 @@
+.navbar {
+
+  background-color: #2caeff !important;
+
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  padding: 10px 10px;
+  gap: 30px;
+
+}
+
+/* Logo */
+.navbar-brand {
+
+  font-weight: bold;
+
+  font-size: 20px;
+
+  color: #ffffff !important;
+
+}
+
+/* liens */
+.nav-link {
+
+  font-size: 16px;
+
+  color: #ffffff !important;
+
+  margin-right: 10px;
+  
+
+}
+
+/* hover */
+.nav-link:hover {
+
+  color: #060b0e !important;
+
+}
+
+/* bouton */
+.form-inline.my-2.my-lg-0 {
+  width: 25%;
+  border-radius: 10px;
+  color: #2caeff;
+  display: flex;
+  gap: 20px;
+  margin-left: 50%;
+
+}
+
+/* search input */
+.form-control {
+
+  border-radius: 20px;
+
+}
+.btn-outline-success.my-2.my-sm-0{
+    border-radius: 20px;    
+    color: aliceblue;
+    border: 1px solid #0e0e0e;
+}
