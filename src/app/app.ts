@@ -17,4 +17,5 @@ import { Content } from './content/content';
 })
 export class App {
   protected readonly title = signal('my-angular-app');
+  
 }

@@ -1,32 +1,37 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-from-patient',
-  standalone: true,
-  imports: [FormsModule,RouterLink],
+  selector: 'app-form-patient',
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './from-patient.html',
-  styleUrl: './from-patient.css'
+  styleUrls: ['./from-patient.css'],
 })
+export class FormPatient {
+  formPatient = new FormGroup({
+    prenom: new FormControl(''),
+    nom: new FormControl(''),
+    email: new FormControl(''),
+    age: new FormControl(''),
+    consent: new FormControl(false)
+  });
 
-export class FromPatient {
+  private http = inject(HttpClient);
+  private router = inject(Router);
 
-  patient = {
-
-    nom: '',
-    prenom: '',
-    age: '',
-    adresse: '',
-    telephone: ''
-
-  };
-
-  ajouterPatient() {
-
-    console.log(this.patient);
-
-    alert("Patient ajouté avec succès");
-
+  inputFormpatient() {
+    const data = this.formPatient.value;
+    this.http.post('http://localhost:3000/patients', data).subscribe({
+      next: (res) => {
+        console.log('Patient ajouté:', res);
+        this.router.navigate(['/patient']);
+      },
+      error: (err) => {
+        console.log('Erreur:', err);
+      }
+    });
   }
-
 }

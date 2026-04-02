@@ -1,48 +1,74 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { Subject, filter, takeUntil } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-patient',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './patient.html',
-  styleUrl: './patient.css',
+  styleUrls: ['./patient.css'],
 })
-export class Patient implements OnInit
-{
+
+// l'interface OnInit permet de charger la page des contenus des methodes qui ne necessitent aucune action pour s'afficher  
+export class Patient implements OnInit, OnDestroy {
   title = 'Patients';
 
+  patients2: any[] = [];
 
-tableauPatients2 :any = [];
- 
-  constructor(private router: Router,private http:HttpClient) {
-    
+  private destroy$ = new Subject<void>();
+
+  // HttpClient (classe) permet d'afficher le contenu depuis la base vers la page html
+  constructor(private route:  Router, private http: HttpClient) {}
+
+  // ngOnInit est une methide abstraite de l'interface OnInit donc qui a besoin d'être declarer dans la classe concrete
+  ngOnInit(): void {
+    console.log("Tester la methode")
+    this.loadPatients();
+
+    this.route.events
+      .pipe(
+        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(() => {
+        this.loadPatients();
+      });
   }
 
-  ngOnInit(): void {
-    console.log ("tester la methode");
-    this.getPatients().subscribe(res => {
-      console.log (res);
-      this.tableauPatients2 = res;
+  private loadPatients() {
+    console.log('loadPatients start');
+    this.getPatients().subscribe({
+      next: (res) => {
+        console.log('patients response', res);
+        this.patients2 = res;
+      },
+      error: (err) => {
+        console.error('patients error', err);
+      }
     });
   }
 
-getSomme(a: number, b: number): number{
-  return a + b;
-}
-getEmail():string{
-  return"seck@mail.com";
-}
+  getSomme(a: number, b:number) :number {
+    return a + b
+  }
 
-getInfoPatient(){
-  this.router.navigate(['form']);
+  getEmail() :string {
+    return "email@gmail.com"
+  }
 
-}
+  getInfoPatient() {
+    this.route.navigate(['/formulaire']);
+  }
 
- getPatients(){
-   return this.http.get("http://localhost:3000/patients");
-   
- }
+  getPatients() {
+    return this.http.get<any[]>('http://localhost:3000/patients');
+  }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }
